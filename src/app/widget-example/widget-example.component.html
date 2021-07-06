@@ -1,0 +1,13 @@
+<div class="loader" *ngIf="isRefreshing">
+  Loading............
+</div>
+
+<div [class.content-loading]="isRefreshing">
+  <h5>Last sprint</h5>
+  <section>
+    <!-- <mat-icon class="widget-icon">analytics</mat-icon> -->
+    <i class="fas fa-adjust"></i>
+    <div class="value">Planned: <strong>25</strong></div>
+    <div class="value">Achieved: <strong>20</strong></div>
+  </section>
+</div>

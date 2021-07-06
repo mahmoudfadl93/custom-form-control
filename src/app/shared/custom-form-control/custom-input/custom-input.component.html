@@ -1,0 +1,62 @@
+<div class="custom-form-control">
+  <div class="label-input-wrapper" [ngClass]="{'form-control-column':!isRow}">
+    <div class="label-wrapper">
+      <ng-template #defaultLabel>
+        <label class="form-label" [for]="fieldName">
+          <span class="is-required">
+            {{ label }}
+          </span>
+        </label>
+      </ng-template>
+
+
+      <ng-container [ngTemplateOutlet]="TemplateLabelRef || defaultLabel"
+        [ngTemplateOutletContext]="{ $implicit: label }">
+      </ng-container>
+    </div>
+
+    <div class="input-wrapper">
+      <div class="input-content">
+        <ng-container *ngIf="showLeftIcon">
+          <div class="left-icon-wrapper">
+            <ng-template #defaultLeftIcon>
+              <i [class]="leftIcon"></i>
+            </ng-template>
+
+            <ng-container [ngTemplateOutlet]="TemplateLeftIconRef || defaultLeftIcon"
+              [ngTemplateOutletContext]="{ $implicit: leftIcon }">
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <input type="text" class="input-element" [ngClass]="{
+          'has-error':
+              formField?.invalid
+              && formField?.dirty
+            }" [placeholder]="customPlaceHolder" [id]="fieldName" [name]="fieldName" [value]="value"
+          (input)="onChange( $event )" [disabled]="isDisabled" (blur)="touched()">
+
+        <ng-container *ngIf="showRightIcon">
+          <div class="right-icon-wrapper">
+            <ng-template #defaultRightIcon>
+              <i [class]="rightIcon"></i>
+            </ng-template>
+
+            <ng-container [ngTemplateOutlet]="TemplateRightIconRef || defaultRightIcon"
+              [ngTemplateOutletContext]="{ $implicit: rightIcon }">
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+
+
+
+
+      <div class="error-wrapper">
+        <!-- <custom-field-error [formField]="formField"></custom-field-error> -->
+      </div>
+    </div>
+  </div>
+
+
+</div>
